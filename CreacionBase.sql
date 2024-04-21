@@ -53,7 +53,7 @@ CREATE TABLE Proveedores (
     telefono VARCHAR(15),
     correo VARCHAR(100) 
     );
-
+    
 -- CREAR TABLA COMPRA_PROVEEDORES
 CREATE TABLE Compra_Proveedores (
     id_transaccion INT AUTO_INCREMENT PRIMARY KEY,
@@ -63,7 +63,16 @@ CREATE TABLE Compra_Proveedores (
     FOREIGN KEY (id_proveedor) REFERENCES Proveedores(id_proveedor)
 );
 
+ALTER TABLE Compra_Proveedores
+    ADD CONSTRAINT FK_Compra_Proveedores_Proveedores
+    FOREIGN KEY (id_proveedor) 
+    REFERENCES Proveedores(id_proveedor) 
+    ON DELETE SET NULL;
+    
+SELECT * FROM Compra_Proveedores;
+
 -- Creación de la tabla Detalles_Transaccion
+
 CREATE TABLE Detalles_Compra_Proveedores (
     id_detalle INT AUTO_INCREMENT PRIMARY KEY,
     id_transaccion INT,
@@ -73,6 +82,7 @@ CREATE TABLE Detalles_Compra_Proveedores (
     FOREIGN KEY (id_transaccion) REFERENCES Compra_Proveedores(id_transaccion),
     FOREIGN KEY (id_pelicula) REFERENCES Peliculas(id_pelicula)
 );
+
 
 
 
