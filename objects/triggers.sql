@@ -4,13 +4,13 @@ USE VENTA_DE_PELICULAS;
 -- PRIMER trigger Validar que el email sea único:
 DELIMITER //
 CREATE TRIGGER validar_correo
-BEFORE INSERT ON CLIENTES
+BEFORE INSERT ON Clientes
 FOR EACH ROW
 BEGIN
   DECLARE correo_existente INT;
 
   SELECT COUNT(*) INTO correo_existente
-  FROM CLIENTES
+  FROM Clientes
   WHERE correo = NEW.correo;
 
   IF correo_existente > 0 THEN
@@ -20,15 +20,10 @@ END;
 //
 DELIMITER ;
 
-
-CALL venta_de_peliculas.insertar_cliente('Pedro', 'Segundo', 2, 'aca la vuelta', '11233', 'carlos@example.com');
-
-SELECT * FROM CLIENTES;
-
 SHOW TRIGGERS LIKE 'validar_correo';
 
--- SEGUNDO trigger registro auditoria por cada insert de peliculas
 
+-- SEGUNDO trigger registro auditoria por cada insert de peliculas
 DELIMITER // 
 CREATE TRIGGER  After_Insert_Peliculas
 AFTER INSERT ON Peliculas
@@ -39,6 +34,4 @@ BEGIN
 END;
 //
 DELIMITER ;
-CALL venta_de_peliculas.insertar_pelicula('SQL LA PELICULA', 'DOCUSERIE', 'JUAN PELICULON', 2024, '300');
-SELECT * FROM Auditoria_Peliculas;
 SHOW TRIGGERS LIKE 'After_Insert_Peliculas';
