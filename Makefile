@@ -60,3 +60,15 @@ clean-db:
 	docker exec -it mysql mysql -u root -p$(PASSWORD) --host $(HOST) --port $(PORT) -e "DROP DATABASE IF EXISTS $(DATABASE_NAME);"
 	@echo "Bye"
 	docker compose -f $(DOCKER_COMPOSE_FILE) down
+
+
+backup-db:
+	@echo "Back up database by structure and data"
+	# Dump MySQL database to a file
+	docker exec -it $(SERVICE_NAME) mysqldump -u root -p$(PASSWORD) $(DATABASE) > ./$(BACKUP_DIR_FILES)/$(DATABASE)-$(CURDATE).sql
+
+clean-db:
+	@echo "Remove the Database"
+	docker exec -it $(SERVICE_NAME) mysql -u root -p$(PASSWORD) --host $(HOST) --port $(PORT) -e "DROP DATABASE IF EXISTS $(DATABASE);"
+	@echo "Bye"
+	docker compose -f $(DOCKER_COMPOSE_FILE) down
