@@ -1,5 +1,7 @@
 USE VENTA_DE_PELICULAS;
 
+SET GLOBAL local_infile = true;
+
 -- Inserción de empleados
 INSERT INTO Empleados (id_vendedor, nombre, fecha_ingreso, telefono, correo) VALUES
 (1, 'Juan', '2000-01-01', '+59892145', 'juan@ventas.com'),
