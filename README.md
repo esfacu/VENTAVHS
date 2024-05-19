@@ -7,11 +7,9 @@
 Alumno: Facundo Rodríguez
 
 Comisión: 53180
-Tutor Regular: Santiago Angel Gonzalez Martin
-Tutor Adjunto: Carla Palermo Palermo
+Tutor: Carla Palermo Palermo
+Tutor: Santiago Angel Gonzalez Martin
 Docente: Anderson Michel TORRES
-
-
 
 ---
 
@@ -49,26 +47,132 @@ ordenes de compra con ellos y dicho flujo. Se Presentaran tambien tabla sobre ve
 
 ## Modelo de negocio
 
-Como base se trata de un negocio de venta de VHS, donde un cliente podrá elegir dentro de un catalogo, dichos VHS son reventa de los proveedores mayoristas. 
+Como base se trata de un negocio de venta de VHS, donde un cliente podrá elegir dentro de un catalogo, dichos VHS son reventa de los proveedores mayoristas. Tambien se necesita un backup de cada registro de peliculas nuevo como auditoria y bases de clientes, proveedores y funcionarios.
 
 ## Diagrama entidad relacion (DER)
 
-https://github.com/esfacu/VENTAVHS/blob/proyecto-final/VENTAVHS%2BRODRIGUEZ.pdf
+![Diagrama Final Entidad-Relación](DIAGRAMA_FINAL.png)
 
+versionado anterior: 
+https://github.com/esfacu/VENTAVHS/blob/proyecto-final/VENTAVHS%2BRODRIGUEZ.pdf
 ![Diagrama Entidad-Relación](diagrama.png)
 
 
 ## Listado de tablas y descripcion
 
+### Tabla: Peliculas
+
+| Campo        | Tipo           | Permite NULL | Clave         |
+|--------------|----------------|--------------|---------------|
+| id_pelicula  | INT            | NO           | PK, AutoInc   |
+| titulo       | VARCHAR(255)   | Sí           | -             |
+| genero       | VARCHAR(100)   | Sí           | -             |
+| director     | VARCHAR(100)   | Sí           | -             |
+| año          | INT            | Sí           | -             |
+| precio       | DECIMAL(10, 2) | Sí           | -             |
+
+### Tabla: Auditoria_Peliculas
+
+| Campo            | Tipo           | Permite NULL | Clave         |
+|------------------|----------------|--------------|---------------|
+| id_auditoria     | INT            | NO           | PK, AutoInc   |
+| accion           | VARCHAR(100)   | Sí           | -             |
+| id_pelicula      | INT            | Sí           | FK            |
+| titulo_pelicula  | VARCHAR(255)   | Sí           | -             |
+| genero_pelicula  | VARCHAR(100)   | Sí           | -             |
+| director_pelicula| VARCHAR(100)   | Sí           | -             |
+| año_pelicula     | INT            | Sí           | -             |
+| precio_pelicula  | DECIMAL(10, 2) | Sí           | -             |
+| fecha_hora       | TIMESTAMP      | Sí           | -             |
+
+### Tabla: Clientes
+
+| Campo    | Tipo         | Permite NULL | Clave         |
+|----------|--------------|--------------|---------------|
+| id_cliente| INT          | NO           | PK, AutoInc   |
+| nombre   | VARCHAR(100) | Sí           | -             |
+| apellido | VARCHAR(100) | Sí           | -             |
+| edad     | INT          | Sí           | -             |
+| direccion| VARCHAR(255) | Sí           | -             |
+| celular  | VARCHAR(15)  | Sí           | -             |
+| correo   | VARCHAR(100) | Sí           | -             |
+
+### Tabla: Empleados
+
+| Campo       | Tipo     | Permite NULL | Clave         |
+|-------------|----------|--------------|---------------|
+| id_vendedor | INT      | NO           | PK, AutoInc   |
+| nombre      | VARCHAR(50) | Sí         | -             |
+| fecha_ingreso | DATE    | Sí           | -             |
+| telefono    | VARCHAR(15) | Sí          | -             |
+| correo      | VARCHAR(100) | Sí          | -             |
+
+### Tabla: Transacciones
+
+| Campo        | Tipo         | Permite NULL | Clave         |
+|--------------|--------------|--------------|---------------|
+| id_transaccion| INT          | NO           | PK, AutoInc   |
+| id_cliente   | INT          | Sí           | FK            |
+| fecha        | DATE         | Sí           | -             |
+| metodo_pago  | VARCHAR(50)  | Sí           | -             |
+| estadotransacciones | BOOLEAN | Sí         | -             |
+
+### Tabla: Detalles_Transaccion
+
+| Campo        | Tipo         | Permite NULL | Clave         |
+|--------------|--------------|--------------|---------------|
+| id_detalle   | INT          | NO           | PK, AutoInc   |
+| id_transaccion| INT         | Sí           | FK            |
+| id_pelicula  | INT          | Sí           | FK            |
+| cantidad     | INT          | Sí           | -             |
+| precio_unitario | DECIMAL(10, 2) | Sí       | -             |
+| id_vendedor  | INT          | Sí           | FK            |
+
+### Tabla: Proveedores
+
+| Campo         | Tipo     | Permite NULL | Clave         |
+|---------------|----------|--------------|---------------|
+| id_proveedor  | INT      | NO           | PK, AutoInc   |
+| rut           | INT      | Sí           | -             |
+| nombre        | VARCHAR(100) | Sí         | -             |
+| telefono      | VARCHAR(15) | Sí          | -             |
+| correo        | VARCHAR(100) | Sí          | -             |
+
+### Tabla: Compra_Proveedores
+
+| Campo        | Tipo         | Permite NULL | Clave         |
+|--------------|--------------|--------------|---------------|
+| id_transaccion| INT          | NO           | PK, AutoInc   |
+| id_proveedor | INT          | Sí           | FK            |
+| fecha        | DATE         | Sí           | -             |
+| metodo_pago  | VARCHAR(50)  | Sí           | -             |
+
+### Tabla: Detalles_Compra_Proveedores
+
+| Campo        | Tipo         | Permite NULL | Clave         |
+|--------------|--------------|--------------|---------------|
+| id_detalle   | INT          | NO           | PK, AutoInc   |
+| id_transaccion| INT         | Sí           | FK            |
+| id_pelicula  | INT          | Sí           | FK            |
+| cantidad     | INT          | Sí           | -             |
+| precio_unitario | DECIMAL(10, 2) | Sí       | -             |
+
+versiones anteriores:
 https://github.com/esfacu/VENTAVHS/blob/proyecto-final/VENTAVHS%2BRODRIGUEZ.pdf
 
 ## Estructura e ingesta de datos
 
+* Desde ultimo Commit la ingesta de datos se realiza desde la carpeta structure, archivo population.sql
+
+documento versiones anteriores: 
 https://github.com/esfacu/VENTAVHS/blob/proyecto-final/Paso%20a%20Paso%20Insercion%20Datos%20%2B%20Vistas%20Script.pdf
 
 ## Objetos de la base de datos
 
-https://github.com/esfacu/VENTAVHS/blob/proyecto-final/VENTAVHS%2BRODRIGUEZ.pdf
+Los objetos de la base de datos se encuentra en carpeta objects, functions.sql, roles_users, store_procedures.sql, triggers.sql, views.sql 
+
+Registro Pruebas Funciones,  ETC :
+https://github.com/esfacu/VENTAVHS/blob/proyecto-final/Entrega2%2BRodriguez.pdf
 
 ## Roles y permisos
 
@@ -78,8 +182,16 @@ Usuario solo puede SELECT en toda la base
 
 ## Back up de la base de datos
 
+Existe backup de la db dentro de carpeta backups
+También se puede generar un backup a través del comando make backup-db que permite ejecutar un backup de manera manual.
 
 ## Herramientas y tecnologias usadas
+MySQL 
+MySQL Workbench 
+Visual Studio Code 
+Makefile (interfaz de procesos)
+Docker (container)
+GitHub (entregar el proyecto)
 
 ## Como levantar el proyecto en CodeSpaces GitHub
 * env: Archivo con contraseñas y data secretas
@@ -94,3 +206,8 @@ Usuario solo puede SELECT en toda la base
     - `make test-db` para mirar los datos de cada tabla
     - `make backup-db` para realizar un backup de mi base de datos
     - `make access-db` para acceder a la base de datos
+
+
+##### Entrega Proyecto Final:
+
+https://github.com/esfacu/VENTAVHS/tree/proyecto-final
