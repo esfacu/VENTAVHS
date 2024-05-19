@@ -7,8 +7,11 @@
 Alumno: Facundo Rodríguez
 
 Comisión: 53180
+
 Tutor: Carla Palermo Palermo
+
 Tutor: Santiago Angel Gonzalez Martin
+
 Docente: Anderson Michel TORRES
 
 ---

@@ -91,5 +91,3 @@ precio_unitario = VALUES(precio_unitario);
 
 
 -- SELECT * FROM empleados;
-
-
