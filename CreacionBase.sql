@@ -1,4 +1,5 @@
 -- Crear la base de datos
+DROP DATABASE IF EXISTS VENTA_DE_PELICULAS;
 CREATE DATABASE IF NOT EXISTS VENTA_DE_PELICULAS;
 
 -- Usar la base de datos recién creada
@@ -24,6 +25,15 @@ CREATE TABLE Clientes (
     celular VARCHAR(15),
     correo VARCHAR(100)
 );
+
+-- CREACIÓN DE LA TABLA EMPLEADOS
+CREATE TABLE Empleados (
+	id_vendedor INT AUTO_INCREMENT PRIMARY KEY,
+    nombre varchar(50),
+    fecha_ingreso DATE,
+    telefono VARCHAR(15),
+    correo VARCHAR(100) 
+);
 -- Creación de la tabla Transacciones
 CREATE TABLE Transacciones (
     id_transaccion INT AUTO_INCREMENT PRIMARY KEY,
@@ -40,8 +50,10 @@ CREATE TABLE Detalles_Transaccion (
     id_pelicula INT,
     cantidad INT,
     precio_unitario DECIMAL(10, 2),
+    id_vendedor INT,
     FOREIGN KEY (id_transaccion) REFERENCES Transacciones(id_transaccion),
-    FOREIGN KEY (id_pelicula) REFERENCES Peliculas(id_pelicula)
+    FOREIGN KEY (id_pelicula) REFERENCES Peliculas(id_pelicula),
+    FOREIGN KEY (id_vendedor) REFERENCES Empleados(id_vendedor)
 );
 
 -- CREACION DE LA TABLA Proveedores
@@ -75,7 +87,7 @@ SELECT * FROM Compra_Proveedores;
 
 CREATE TABLE Detalles_Compra_Proveedores (
     id_detalle INT AUTO_INCREMENT PRIMARY KEY,
-    id_transaccion INT,
+    id_transaccion INT UNIQUE,
     id_pelicula INT,
     cantidad INT,
     precio_unitario DECIMAL(10, 2),
@@ -88,4 +100,7 @@ CREATE TABLE Detalles_Compra_Proveedores (
 
 SELECT * FROM detalles_compra_proveedores;
 
-SELECT CalcularPrecio(3) AS PrecioTotal;
+
+
+
+
