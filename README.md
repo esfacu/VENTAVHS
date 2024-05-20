@@ -177,33 +177,32 @@ Los objetos de la base de datos se encuentra en carpeta objects, functions.sql, 
 Registro Pruebas Funciones,  ETC :
 https://github.com/esfacu/VENTAVHS/blob/proyecto-final/Entrega2%2BRodriguez.pdf
 
-+--------+------------+-------------------------+----------+-----------------+-------+
-| nombre | apellido   | titulo                  | cantidad | precio_unitario | total |
-+--------+------------+-------------------------+----------+-----------------+-------+
-| Carlos | Gutiérrez | Back to the Future      |        1 |            9.99 |  9.99 |
-| Ana    | Martínez  | The Breakfast Club      |        2 |           12.99 | 25.98 |
-| Ana    | Martínez  | Raiders of the Lost Ark |        1 |           14.99 | 14.99 |
-+--------+------------+-------------------------+----------+-----------------+-------+
-+------------------+--------------------+----------+-----------------+-------+
-| nombre_proveedor | titulo             | cantidad | precio_unitario | total |
-+------------------+--------------------+----------+-----------------+-------+
-| Proveedor Uno    | The Breakfast Club |        3 |            2.75 |  8.25 |
-| Proveedor Dos    | Back to the Future |        4 |            3.00 | 12.00 |
-+------------------+--------------------+----------+-----------------+-------+
-+-----------------+-------------------------+-----------------+-------+-----------------+
-| nombre_vendedor | titulo                  | precio_unitario | total | cantidad_ventas |
-+-----------------+-------------------------+-----------------+-------+-----------------+
-| Juan            | Back to the Future      |            9.99 |  9.99 |               1 |
-| Raul            | The Breakfast Club      |           12.99 | 25.98 |               1 |
-| Pedro           | Raiders of the Lost Ark |           14.99 | 14.99 |               1 |
-+-----------------+-------------------------+-----------------+-------+-----------------+
+### Clientes/Compra:
+| Nombre | Apellido   | Título                  | Cantidad | Precio Unitario | Total |
+|--------|------------|-------------------------|----------|-----------------|-------|
+| Carlos | Gutiérrez  | Back to the Future      | 1        | 9.99            | 9.99  |
+| Ana    | Martínez   | The Breakfast Club      | 2        | 12.99           | 25.98 |
+| Ana    | Martínez   | Raiders of the Lost Ark | 1        | 14.99           | 14.99 |
 
-+------------+---------------+------------------+--------------------+----------+-----------------+-------+
-| fecha      | metodo_pago   | nombre_proveedor | titulo             | cantidad | precio_unitario | total |
-+------------+---------------+------------------+--------------------+----------+-----------------+-------+
-| 2024-03-23 | Tarjeta       | Proveedor Dos    | Back to the Future |        4 |            3.00 | 12.00 |
-| 2024-03-22 | Transferencia | Proveedor Uno    | The Breakfast Club |        3 |            2.75 |  8.25 |
-+------------+---------------+------------------+--------------------+----------+-----------------+-------+
+### Proveedores/Compras:
+| Nombre Proveedor | Título             | Cantidad | Precio Unitario | Total |
+|------------------|--------------------|----------|-----------------|-------|
+| Proveedor Uno    | The Breakfast Club | 3        | 2.75            | 8.25  |
+| Proveedor Dos    | Back to the Future | 4        | 3.00            | 12.00 |
+
+### Vendedores/Ventas:
+| Nombre Vendedor | Título                  | Precio Unitario | Total | Cantidad Ventas |
+|-----------------|-------------------------|-----------------|-------|-----------------|
+| Juan            | Back to the Future      | 9.99            | 9.99  | 1               |
+| Raul            | The Breakfast Club      | 12.99           | 25.98 | 1               |
+| Pedro           | Raiders of the Lost Ark | 14.99           | 14.99 | 1               |
+
+### DetalleVentas:
+| Fecha      | Método de Pago | Nombre Proveedor | Título             | Cantidad | Precio Unitario | Total |
+|------------|----------------|------------------|--------------------|----------|-----------------|-------|
+| 2024-03-23 | Tarjeta        | Proveedor Dos    | Back to the Future | 4        | 3.00            | 12.00 |
+| 2024-03-22 | Transferencia  | Proveedor Uno    | The Breakfast Club | 3        | 2.75            | 8.25  |
+
 
 
 ## Roles y permisos
