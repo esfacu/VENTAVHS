@@ -1,5 +1,7 @@
 USE VENTA_DE_PELICULAS;
 
+SET GLOBAL local_infile = true;
+
 -- Inserción de empleados
 INSERT INTO Empleados (id_vendedor, nombre, fecha_ingreso, telefono, correo) VALUES
 (1, 'Juan', '2000-01-01', '+59892145', 'juan@ventas.com'),
@@ -13,8 +15,8 @@ telefono = VALUES(telefono),
 correo = VALUES(correo);
 
 -- Inserción de datos en la tabla Peliculas
-INSERT INTO Peliculas (titulo, genero, director, año, precio) VALUES
-('Back to the Future', 'Ciencia ficción', 'Robert Zemeckis', 1985, 9.99),
+INSERT INTO Peliculas (titulo, genero, director, anio, precio) VALUES
+('Back to the Future', 'Ciencia ficción', 'Robert Zemeckis', 1985, 9),
 ('The Breakfast Club', 'Comedia dramática', 'John Hughes', 1985, 12.99),
 ('Raiders of the Lost Ark', 'Aventura', 'Steven Spielberg', 1981, 14.99),
 ('Blade Runner', 'Ciencia ficción', 'Ridley Scott', 1982, 11.99),
@@ -25,7 +27,7 @@ INSERT INTO Peliculas (titulo, genero, director, año, precio) VALUES
 ON DUPLICATE KEY UPDATE
 genero = VALUES(genero),
 director = VALUES(director),
-año = VALUES(año),
+anio = VALUES(anio),
 precio = VALUES(precio);
 
 
@@ -90,6 +92,4 @@ cantidad = VALUES(cantidad),
 precio_unitario = VALUES(precio_unitario);
 
 
-SELECT * FROM empleados;
-
-
+-- SELECT * FROM empleados;

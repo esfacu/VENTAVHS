@@ -11,7 +11,7 @@ CREATE TABLE Peliculas (
     titulo VARCHAR(255),
     genero VARCHAR(100),
     director VARCHAR(100),
-    año INT,
+    anio INT,
     precio DECIMAL(10, 2)
 );
 
@@ -26,7 +26,7 @@ CREATE TABLE Clientes (
     correo VARCHAR(100)
 );
 
--- CREACIÓN DE LA TABLA EMPLEADOS
+-- -- CREACIÓN DE LA TABLA EMPLEADOS
 CREATE TABLE Empleados (
 	id_vendedor INT AUTO_INCREMENT PRIMARY KEY,
     nombre varchar(50),
@@ -34,16 +34,17 @@ CREATE TABLE Empleados (
     telefono VARCHAR(15),
     correo VARCHAR(100) 
 );
--- Creación de la tabla Transacciones
+-- -- Creación de la tabla Transacciones
 CREATE TABLE Transacciones (
     id_transaccion INT AUTO_INCREMENT PRIMARY KEY,
     id_cliente INT,
     fecha DATE,
     metodo_pago VARCHAR(50),
+    estadotransacciones BOOLEAN,
     FOREIGN KEY (id_cliente) REFERENCES Clientes(id_cliente)
 );
 
--- Creación de la tabla Detalles_Transaccion
+-- -- Creación de la tabla Detalles_Transaccion
 CREATE TABLE Detalles_Transaccion (
     id_detalle INT AUTO_INCREMENT PRIMARY KEY,
     id_transaccion INT,
@@ -56,7 +57,7 @@ CREATE TABLE Detalles_Transaccion (
     FOREIGN KEY (id_vendedor) REFERENCES Empleados(id_vendedor)
 );
 
--- CREACION DE LA TABLA Proveedores
+-- -- CREACION DE LA TABLA Proveedores
 
 CREATE TABLE Proveedores (
 	id_proveedor INT AUTO_INCREMENT PRIMARY KEY,
@@ -66,7 +67,7 @@ CREATE TABLE Proveedores (
     correo VARCHAR(100) 
     );
     
--- CREAR TABLA COMPRA_PROVEEDORES
+-- -- CREAR TABLA COMPRA_PROVEEDORES
 CREATE TABLE Compra_Proveedores (
     id_transaccion INT AUTO_INCREMENT PRIMARY KEY,
     id_proveedor INT,
@@ -81,9 +82,9 @@ ALTER TABLE Compra_Proveedores
     REFERENCES Proveedores(id_proveedor) 
     ON DELETE SET NULL;
     
-SELECT * FROM Compra_Proveedores;
+-- SELECT * FROM Compra_Proveedores;
 
--- Creación de la tabla Detalles_Transaccion
+-- -- Creación de la tabla Detalles_Transaccion
 
 CREATE TABLE Detalles_Compra_Proveedores (
     id_detalle INT AUTO_INCREMENT PRIMARY KEY,
@@ -98,9 +99,6 @@ CREATE TABLE Detalles_Compra_Proveedores (
 
 
 
-SELECT * FROM detalles_compra_proveedores;
-
-
-
+-- SELECT * FROM detalles_compra_proveedores;
 
 
