@@ -25,16 +25,16 @@ Docente: Anderson Michel TORRES
     * ~ 2 funciones
     
 - El documento debe contener:
-    - Introducción
-    - Objetivo
-    - Situación problemática
-    - Modelo de negocio
-    - Diagrama de entidad relació
-    - Listado de tablas con descripción de estructura (columna,descripción, tipo de datos, tipo de clave)
-    - Scripts de creación de cada objeto de la base de datos
-    - Scripts de inserción de datos
-    - Informes generados en base a la información de la base
-    - Herramientas y tecnologías usadas
+    ## Introducción
+    ## Objetivo
+    ## Situación problemática
+    ## Modelo de negocio
+    ## Diagrama de entidad relació
+    ## Listado de tablas con descripción de estructura (columna,descripción, tipo de datos, tipo de clave)
+    ## Scripts de creación de cada objeto de la base de datos
+    ## Scripts de inserción de datos
+    ## Informes generados en base a la información de la base
+    ## Herramientas y tecnologías usadas
 
 
 
