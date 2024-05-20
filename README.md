@@ -16,30 +16,6 @@ Docente: Anderson Michel TORRES
 
 ---
 
-### **Consignas:**
-- La base de datos debe contener al menos:
-    * ~ 15 tablas, entre las cuales debe haber al menos 1 tabla de hechos,  2 tablas transaccionales.
-    * ~ 5 vistas.
-    * ~ 2 stored procedure.
-    * ~ 2  trigger.
-    * ~ 2 funciones
-    
-- El documento debe contener:
-    ## Introducción
-    ## Objetivo
-    ## Situación problemática
-    ## Modelo de negocio
-    ## Diagrama de entidad relació
-    ## Listado de tablas con descripción de estructura (columna,descripción, tipo de datos, tipo de clave)
-    ## Scripts de creación de cada objeto de la base de datos
-    ## Scripts de inserción de datos
-    ## Informes generados en base a la información de la base
-    ## Herramientas y tecnologías usadas
-
-
-
----
-
 ## Tematica del proyecto
 
 La idea consiste en un negocio retro tipo venta de películas(VHS). Consistirá en base de películas
